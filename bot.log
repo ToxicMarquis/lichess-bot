@@ -1,0 +1,548 @@
+2025-03-23 23:59:15,025 - DEBUG - Using selector: EpollSelector
+2025-03-23 23:59:15,030 - DEBUG - <UciProtocol (pid=1426)>: Connection made
+2025-03-23 23:59:15,031 - DEBUG - <UciProtocol (pid=1426)>: >> Stockfish 15.1 by the Stockfish developers (see AUTHORS file)
+2025-03-23 23:59:15,035 - DEBUG - <UciProtocol (pid=1426)>: << uci
+2025-03-23 23:59:15,088 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.31.128.40:8080
+2025-03-23 23:59:15,089 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-23 23:59:15,366 - DEBUG - <UciProtocol (pid=1426)>: >> id name Stockfish 15.1
+2025-03-23 23:59:15,368 - DEBUG - <UciProtocol (pid=1426)>: >> id author the Stockfish developers (see AUTHORS file)
+2025-03-23 23:59:15,369 - DEBUG - <UciProtocol (pid=1426)>: >> 
+2025-03-23 23:59:15,375 - DEBUG - <UciProtocol (pid=1426)>: >> option name Debug Log File type string default 
+2025-03-23 23:59:15,377 - DEBUG - <UciProtocol (pid=1426)>: >> option name Threads type spin default 1 min 1 max 1024
+2025-03-23 23:59:15,379 - DEBUG - <UciProtocol (pid=1426)>: >> option name Hash type spin default 16 min 1 max 33554432
+2025-03-23 23:59:15,380 - DEBUG - <UciProtocol (pid=1426)>: >> option name Clear Hash type button
+2025-03-23 23:59:15,381 - DEBUG - <UciProtocol (pid=1426)>: >> option name Ponder type check default false
+2025-03-23 23:59:15,382 - DEBUG - <UciProtocol (pid=1426)>: >> option name MultiPV type spin default 1 min 1 max 500
+2025-03-23 23:59:15,383 - DEBUG - <UciProtocol (pid=1426)>: >> option name Skill Level type spin default 20 min 0 max 20
+2025-03-23 23:59:15,384 - DEBUG - <UciProtocol (pid=1426)>: >> option name Move Overhead type spin default 10 min 0 max 5000
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name Slow Mover type spin default 100 min 10 max 1000
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name nodestime type spin default 0 min 0 max 10000
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name UCI_Chess960 type check default false
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name UCI_AnalyseMode type check default false
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name UCI_LimitStrength type check default false
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name UCI_Elo type spin default 1350 min 1350 max 2850
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name UCI_ShowWDL type check default false
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name SyzygyPath type string default <empty>
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name SyzygyProbeDepth type spin default 1 min 1 max 100
+2025-03-23 23:59:15,385 - DEBUG - <UciProtocol (pid=1426)>: >> option name Syzygy50MoveRule type check default true
+2025-03-23 23:59:15,386 - DEBUG - <UciProtocol (pid=1426)>: >> option name SyzygyProbeLimit type spin default 7 min 0 max 7
+2025-03-23 23:59:15,386 - DEBUG - <UciProtocol (pid=1426)>: >> option name Use NNUE type check default true
+2025-03-23 23:59:15,386 - DEBUG - <UciProtocol (pid=1426)>: >> option name EvalFile type string default nn-ad9b42354671.nnue
+2025-03-23 23:59:15,386 - DEBUG - <UciProtocol (pid=1426)>: >> uciok
+2025-03-23 23:59:15,386 - DEBUG - <UciProtocol (pid=1426)>: << setoption name Hash value 1024
+2025-03-23 23:59:15,386 - DEBUG - <UciProtocol (pid=1426)>: << setoption name Skill Level value 10
+2025-03-23 23:59:15,386 - DEBUG - <UciProtocol (pid=1426)>: << setoption name UCI_LimitStrength value true
+2025-03-23 23:59:15,386 - DEBUG - <UciProtocol (pid=1426)>: << setoption name UCI_Elo value 1600
+2025-03-23 23:59:15,387 - INFO - Stockfish инициализирован
+2025-03-23 23:59:15,389 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:15,686 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:15,785 - INFO - Обработка игры txn9zw6l
+2025-03-23 23:59:15,794 - INFO - Установлен цвет: Белые
+2025-03-23 23:59:15,891 - DEBUG - Игра txn9zw6l: получено событие gameFull
+2025-03-23 23:59:15,892 - DEBUG - Начальное состояние игры txn9zw6l: {'type': 'gameState', 'moves': 'e2e4 e7e5', 'wtime': 152020, 'btime': 300000, 'winc': 0, 'binc': 0, 'status': 'started'}
+2025-03-23 23:59:15,892 - DEBUG - Применяем историю ходов: e2e4 e7e5
+2025-03-23 23:59:15,892 - INFO - Текущая позиция:
+  -----------------
+8 |♜|♞|♝|♛|♚|♝|♞|♜|
+  -----------------
+7 |♟|♟|♟|♟|⭘|♟|♟|♟|
+  -----------------
+6 |⭘|⭘|⭘|⭘|⭘|⭘|⭘|⭘|
+  -----------------
+5 |⭘|⭘|⭘|⭘|♟|⭘|⭘|⭘|
+  -----------------
+4 |⭘|⭘|⭘|⭘|♙|⭘|⭘|⭘|
+  -----------------
+3 |⭘|⭘|⭘|⭘|⭘|⭘|⭘|⭘|
+  -----------------
+2 |♙|♙|♙|♙|⭘|♙|♙|♙|
+  -----------------
+1 |♖|♘|♗|♕|♔|♗|♘|♖|
+  -----------------
+   a b c d e f g h
+
+2025-03-23 23:59:15,892 - INFO - Очередь хода: Белые
+2025-03-23 23:59:15,892 - INFO - Инициируем расчет хода
+2025-03-23 23:59:15,893 - ERROR - Фатальная ошибка: illegal uci: 'e2e4' in rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2
+Traceback (most recent call last):
+  File "/home/runner/workspace/main.py", line 387, in handle_game_state
+    board.push_uci(move)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/chess/__init__.py", line 3284, in push_uci
+    move = self.parse_uci(uci)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/chess/__init__.py", line 3267, in parse_uci
+    raise IllegalMoveError(f"illegal uci: {uci!r} in {self.fen()}")
+chess.IllegalMoveError: illegal uci: 'e2e4' in rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2
+2025-03-23 23:59:16,284 - INFO - 172.31.128.40 - - [23/Mar/2025 23:59:16] "GET / HTTP/1.1" 200 -
+2025-03-23 23:59:20,435 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:20,721 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:26,462 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:26,556 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:29,752 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:29,845 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:35,885 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:35,978 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:40,325 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:40,419 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:46,791 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:46,885 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:50,041 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:50,145 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:55,797 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:55,890 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-23 23:59:59,645 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-23 23:59:59,738 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:03,846 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:03,939 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:09,617 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:09,710 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:13,006 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:13,099 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:19,403 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:19,497 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:24,630 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:24,724 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:31,169 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:31,262 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:35,199 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:35,292 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:40,911 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:41,005 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:44,132 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:44,225 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:49,926 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:50,020 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:00:56,402 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:00:56,504 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:02,553 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:02,646 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:09,088 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:09,181 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:12,387 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:12,480 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:18,112 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:18,205 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:24,042 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:24,136 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:27,608 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:27,701 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:34,228 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:34,321 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:38,300 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:38,393 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:39,564 - DEBUG - Игра txn9zw6l: получено событие gameState
+2025-03-24 00:01:39,565 - ERROR - Фатальная ошибка: illegal uci: 'e2e4' in rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2
+Traceback (most recent call last):
+  File "/home/runner/workspace/main.py", line 387, in handle_game_state
+    logging.warning("Обнаружено расхождение в истории ходов! Перезагружаем доску...")
+        ^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/chess/__init__.py", line 3284, in push_uci
+    move = self.parse_uci(uci)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/chess/__init__.py", line 3267, in parse_uci
+    raise IllegalMoveError(f"illegal uci: {uci!r} in {self.fen()}")
+chess.IllegalMoveError: illegal uci: 'e2e4' in rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2
+2025-03-24 00:01:39,572 - INFO - Игра txn9zw6l завершена
+2025-03-24 00:01:44,207 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:44,300 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:49,300 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:49,396 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:53,113 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:53,207 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:01:57,505 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:01:57,598 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:04,277 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:04,370 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:07,983 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:08,076 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:14,086 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:14,179 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:20,540 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:20,633 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:26,584 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:26,677 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:30,249 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:30,342 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:36,317 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:36,410 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:41,371 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:41,464 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:47,250 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:47,344 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:02:53,586 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:02:53,680 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:00,512 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:00,607 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:07,396 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:07,490 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:13,788 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:13,881 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:19,056 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:19,149 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:23,846 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:23,944 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:27,825 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:27,919 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:32,033 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:32,126 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:38,710 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:38,804 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:43,925 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:44,019 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:49,457 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:49,550 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:03:55,849 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:03:55,942 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:00,557 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:00,652 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:03,751 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:03,844 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:10,266 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:10,360 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:14,193 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:14,287 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:21,037 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:21,131 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:25,087 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:25,180 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:31,067 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:31,161 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:37,742 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:37,836 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:42,620 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:42,713 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:46,143 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:46,237 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:53,274 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:53,367 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:04:57,333 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:04:57,426 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:00,770 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:00,864 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:04,216 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:04,310 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:10,695 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:10,789 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:14,395 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:14,488 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:20,607 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:20,702 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:26,182 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:26,275 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:29,616 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:29,709 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:33,712 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:33,807 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:37,249 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:37,344 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:40,803 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:40,899 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:47,057 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:47,155 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:53,785 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:53,882 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:05:57,860 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:05:57,963 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:04,251 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:04,348 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:10,522 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:10,617 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:16,697 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:16,794 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:22,529 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:22,625 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:26,208 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:26,307 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:29,719 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:29,814 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:33,670 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:33,765 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:39,039 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:39,134 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:43,609 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:43,710 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:49,662 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:49,758 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:06:52,991 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:06:53,087 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:00,072 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:00,169 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:05,168 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:05,263 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:09,024 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:09,119 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:15,422 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:15,521 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:19,307 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:19,403 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:25,125 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:25,223 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:30,593 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:30,689 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:35,971 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:36,066 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:42,425 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:42,520 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:47,665 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:47,762 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:51,330 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:51,428 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:07:56,839 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:07:56,934 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:02,565 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:02,660 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:06,505 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:06,600 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:09,929 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:10,024 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:16,862 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:16,957 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:22,897 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:22,992 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:29,138 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:29,233 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:33,796 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:33,891 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:39,842 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:39,937 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:45,059 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:45,153 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:51,615 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:51,710 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:08:55,113 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:08:55,208 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:00,448 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:00,543 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:06,106 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:06,201 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:10,893 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:10,987 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:18,033 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:18,127 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:21,559 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:21,654 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:24,853 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:24,947 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:29,661 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:29,756 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:34,957 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:35,052 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:41,818 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:41,912 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:48,178 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:48,273 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:51,480 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:51,575 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:09:58,323 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:09:58,418 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:02,703 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:02,798 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:07,331 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:07,429 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:12,743 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:12,841 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:19,388 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:19,484 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:25,153 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:25,248 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:31,783 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:31,878 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:37,515 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:37,611 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:43,676 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:43,772 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:49,459 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:49,554 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:54,434 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:54,529 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:10:58,366 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:10:58,461 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:01,898 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:01,992 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:05,250 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:05,345 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:11,482 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:11,577 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:15,283 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:15,379 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:22,368 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:22,463 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:29,296 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:29,391 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:32,527 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:32,622 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:39,635 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:39,730 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:43,805 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:43,900 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:48,220 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:48,315 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:11:54,956 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:11:55,053 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:00,176 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:00,271 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:06,812 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:06,907 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:12,175 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:12,270 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:19,407 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:19,535 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:24,098 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:24,192 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:29,013 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:29,108 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:34,409 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:34,504 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:39,224 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:39,319 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:46,190 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:46,285 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:50,281 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:50,375 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:12:57,279 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:12:57,373 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:01,867 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:01,975 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:08,059 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:08,153 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:12,041 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:12,136 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:16,093 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:16,187 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:20,759 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:20,853 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:24,383 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:24,478 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:29,685 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:29,782 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:35,509 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:35,604 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:41,723 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:41,817 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:45,020 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:45,116 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:50,865 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:50,960 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:13:57,870 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:13:57,964 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:01,480 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:01,576 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:04,867 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:04,966 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:08,587 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:08,681 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:14,064 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:14,158 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:17,904 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:18,002 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:23,347 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:23,441 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:28,269 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:28,364 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:34,249 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:34,343 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:39,310 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:39,404 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:45,996 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:46,090 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:50,363 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:50,481 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:14:57,008 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:14:57,103 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:02,374 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:02,471 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:06,489 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:06,583 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:11,465 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:11,560 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:15,209 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:15,303 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:19,974 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:20,072 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:25,733 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:25,828 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:29,369 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:29,463 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:35,901 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:35,996 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:42,436 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:42,531 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:47,592 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:47,699 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:15:53,723 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:15:53,823 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:00,678 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:00,772 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:04,964 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:05,071 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:08,933 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:09,028 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:13,838 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:13,933 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:17,779 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:17,874 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:22,898 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:22,993 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:30,043 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:30,138 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:35,557 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:35,650 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:41,956 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:42,049 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:47,877 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:47,970 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:53,740 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:53,834 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:16:58,947 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:16:59,043 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:03,852 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:03,949 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:09,683 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:09,776 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:15,872 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:15,965 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:20,707 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:20,801 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:24,654 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:24,748 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:28,901 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:28,994 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:32,811 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:32,918 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:38,926 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:39,020 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:42,775 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:42,869 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:48,502 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:48,596 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:52,532 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:52,625 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:17:58,624 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:17:58,718 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:02,428 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:02,521 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:07,694 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:07,787 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:14,698 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:14,792 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:18,319 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:18,412 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:24,650 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:24,743 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:29,308 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:29,406 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:35,758 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:35,852 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:39,304 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:39,401 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:45,945 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:46,041 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:52,428 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:52,521 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:18:58,866 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:18:58,968 - DEBUG - Request: get https://lichess.org/api/account/playing
+2025-03-24 00:19:04,465 - DEBUG - Request: get https://lichess.org/api/challenge
+2025-03-24 00:19:04,558 - DEBUG - Request: get https://lichess.org/api/account/playing
