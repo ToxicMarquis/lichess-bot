@@ -51,8 +51,8 @@ class BotManager:
         self.params = {
             'Threads': 1,
             'Hash': 2048,
-            'Skill Level': 1,
-            'UCI_LimitStrength': True,
+            'Skill Level': 20,
+            'UCI_LimitStrength': False,
             'UCI_Elo': 1350
         }
     @property
@@ -169,8 +169,6 @@ class BotManager:
         """Исправленное формирование URL"""
         if not url.startswith(("http://", "https://")):
             url = f"{BASE_URL}{url}"
-
-        logging.debug(f"Request: {method.__name__} {url}")
 
         try:
             async with method(url, **kwargs) as response:
@@ -305,7 +303,7 @@ class BotManager:
         try:
             async for event in self.get_game_stream(game_id):
                 try:
-                    logging.debug(
+                    logging.info(
                         f"Игра {game_id}: получено событие {event.get('type')}"
                     )
 
@@ -479,8 +477,6 @@ class BotManager:
                     headers={"Authorization": f"Bearer {API_TOKEN}"},
                     timeout=aiohttp.ClientTimeout(total=5)
                 ) as response:
-                    logging.debug(f"Статус ответа: {response.status}")
-
                     if response.status == 200:
                         logging.info(f"Ход {move} успешно отправлен!")
 
