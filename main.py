@@ -33,6 +33,23 @@ ACCEPTANCE_CRITERIA = {
     'deny_bots': True
 }
 
+def setup_challenge_logger():
+    challenge_logger = logging.getLogger("ChallengeLogger")
+    challenge_logger.setLevel(logging.INFO)
+
+    file_handler = logging.FileHandler("challenge_log.txt", encoding="utf-8")
+    file_handler.setLevel(logging.INFO)
+
+    formatter = logging.Formatter(
+        "%(asctime)s - %(levelname)s - %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S"
+    )
+    file_handler.setFormatter(formatter)
+
+    challenge_logger.addHandler(file_handler)
+    return challenge_logger
+
+challenge_logger = setup_challenge_logger()
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -67,7 +84,7 @@ class BotManager:
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
             logging.info(f"Создана директория: {os.path.abspath(self.save_dir)}")
-            
+
     async def init(self):
         """Инициализация с проверкой доступности Stockfish"""
         try:
@@ -108,40 +125,45 @@ class BotManager:
         return (tc.get('limit', 0), tc.get('increment', 0))
 
     def is_challenge_acceptable(self, challenge):
-        """Проверка вызова с учетом реваншей"""
         try:
             challenger = challenge.get('challenger', {})
             is_rematch = challenge.get('rematch', False)
-            logging.info(challenger)
+
             # Обработка реваншей
             if is_rematch:
                 if not ACCEPTANCE_CRITERIA['allow_rematches']:
+                    self._log_challenge(challenger, "отклонено", challenge)
                     return False, "Реванши отключены"
-
-                # Проверка на ботов
                 if ACCEPTANCE_CRITERIA['deny_bots'] and challenger.get('title') == 'BOT':
+                    self._log_challenge(challenger, "отклонено", challenge)
                     return False, "Реванш от бота отклонен"
-
+                self._log_challenge(challenger, "принято", challenge)
                 return True, "Принят реванш"
 
             # Оригинальный код проверки для обычных вызовов
             tc = challenge.get('timeControl', {})
+            rated = challenge.get('rated', False)  # Получаем рейтинговый статус вызова
+
+            # Проверка рейтингового статуса
+            if rated != ACCEPTANCE_CRITERIA['rated']:
+                self._log_challenge(challenger, "отклонено", challenge)
+                logging.info(f"Отклонен вызов: {'рейтинговая' if rated else 'нерейтинговая'} игра не разрешена")
+                return False, f"Неподдерживаемый режим {'рейтинговой' if rated else 'нерейтинговой'} игры"
 
             # Проверка на ботов
             if ACCEPTANCE_CRITERIA['deny_bots'] and challenger.get('title') == 'BOT':
+                self._log_challenge(challenger, "отклонено", challenge)
                 return False, "Вызов от бота отклонен"
 
             # Проверка варианта игры
             variant = challenge.get('variant', {}).get('key')
             if variant not in ACCEPTANCE_CRITERIA['variants']:
+                self._log_challenge(challenger, "отклонено", challenge)
                 return False, f"Неподдерживаемый вариант {variant}"
-            # Проверка на рейтинг
-            rated = challenger.get('rated', False)
-            if rated != ACCEPTANCE_CRITERIA['rated']:
-                return False, f"Неподдерживаемый режим {rated}"
-            
+
             # Проверка типа игры
             if tc.get('type') not in ['clock', 'correspondence', 'unlimited']:
+                self._log_challenge(challenger, "отклонено", challenge)
                 return False, "Неподдерживаемый тип игры"
 
             # Парсинг времени
@@ -151,20 +173,41 @@ class BotManager:
             if challenger.get('rating'):
                 rating = challenger['rating']
                 if not (ACCEPTANCE_CRITERIA['min_rating'] <= rating <=
-                            ACCEPTANCE_CRITERIA['max_rating']):
+                        ACCEPTANCE_CRITERIA['max_rating']):
+                    self._log_challenge(challenger, "отклонено", challenge)
                     return False, f"Рейтинг {rating} вне диапазона"
 
             # Проверка временного контроля
             acceptable = any(parsed_tc[0] == t and parsed_tc[1] >= i
                              for t, i in ACCEPTANCE_CRITERIA['time_controls'])
             if not acceptable:
+                self._log_challenge(challenger, "отклонено", challenge)
                 return False, "Недопустимый временной контроль"
 
+            # Логируем принятый вызов
+            self._log_challenge(challenger, "принято", challenge)
             return True, "Вызов принят"
-
         except Exception as e:
             logging.error(f"Ошибка проверки: {str(e)}")
             return False, "Ошибка обработки"
+    def _log_challenge(self, challenger, status, challenge):
+        """Логирует вызов на игру."""
+        title = challenger.get('title', '') or ''
+        username = challenger.get('name', 'Неизвестный игрок')
+        rating = challenger.get('rating', 'Нет данных')
+        tc = challenge.get('timeControl', {})
+        parsed_tc = self.parse_time_control(tc)
+        time_control = f"{parsed_tc[0]}+{parsed_tc[1]}" if parsed_tc else "Нет данных"
+        rated_status = "рейтинговая" if challenge.get('rated', False) else "нерейтинговая"
+
+        # Формируем сообщение для лога
+        message = (
+            f"{title} {username} ({rating}) - {status}\n"
+            f"{time_control} - {rated_status}"
+        )
+
+        # Логируем в отдельный файл
+        challenge_logger.info(message)
     async def safe_request(self, method, url, **kwargs):
         """Исправленное формирование URL"""
         if not url.startswith(("http://", "https://")):
@@ -268,7 +311,7 @@ class BotManager:
         except Exception as e:
             logging.critical(f"Ошибка перезапуска движка: {str(e)}")
             raise
-            
+
     # Процессы в партии
     async def get_game_stream(self, game_id):
         """Упрощенный поток событий игры"""
