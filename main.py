@@ -22,7 +22,6 @@ STOCKFISH_PATH = './stockfish'
 REQUEST_DELAY = (3, 7)
 MAX_RETRIES = 3
 
-# Критерии вызовов
 ACCEPTANCE_CRITERIA = {
     'min_rating': 1500,
     'max_rating': 3000,
@@ -57,7 +56,6 @@ logging.basicConfig(
               logging.StreamHandler()])
 
 class BotManager:
-    # Подключение
     def __init__(self):
         self._session = None
         self.engine = None
@@ -73,20 +71,18 @@ class BotManager:
             'UCI_Elo': 1350
         }
     @property
+    
     def session(self):
-        """Ленивая инициализация сессии"""
         if self._session is None or self._session.closed:
             self._session = aiohttp.ClientSession()
         return self._session
 
     def _create_save_directory(self):
-        """Создает директорию для сохранения, если ее нет"""
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
             logging.info(f"Создана директория: {os.path.abspath(self.save_dir)}")
 
     async def init(self):
-        """Инициализация с проверкой доступности Stockfish"""
         try:
             if not os.path.exists(STOCKFISH_PATH):
                 raise FileNotFoundError(
@@ -101,7 +97,6 @@ class BotManager:
             raise
 
     async def close(self):
-        """Корректное закрытие ресурсов"""
         tasks = []
         if self.engine:
             tasks.append(self.engine.quit())
@@ -116,7 +111,6 @@ class BotManager:
         logging.info("Все ресурсы закрыты")
 
     def parse_time_control(self, tc):
-        """Парсинг временного контроля"""
         if tc['type'] == 'unlimited':
             return (0, 0)
         if tc['type'] == 'correspondence':
@@ -129,7 +123,7 @@ class BotManager:
             challenger = challenge.get('challenger', {})
             is_rematch = challenge.get('rematch', False)
 
-            # Обработка реваншей
+            # Обработка реваншей (нихера не работают)
             if is_rematch:
                 if not ACCEPTANCE_CRITERIA['allow_rematches']:
                     self._log_challenge(challenger, "отклонено", challenge)
@@ -140,36 +134,29 @@ class BotManager:
                 self._log_challenge(challenger, "принято", challenge)
                 return True, "Принят реванш"
 
-            # Оригинальный код проверки для обычных вызовов
             tc = challenge.get('timeControl', {})
-            rated = challenge.get('rated', False)  # Получаем рейтинговый статус вызова
+            rated = challenge.get('rated', False)
 
-            # Проверка рейтингового статуса
             if rated != ACCEPTANCE_CRITERIA['rated']:
                 self._log_challenge(challenger, "отклонено", challenge)
                 logging.info(f"Отклонен вызов: {'рейтинговая' if rated else 'нерейтинговая'} игра не разрешена")
                 return False, f"Неподдерживаемый режим {'рейтинговой' if rated else 'нерейтинговой'} игры"
 
-            # Проверка на ботов
             if ACCEPTANCE_CRITERIA['deny_bots'] and challenger.get('title') == 'BOT':
                 self._log_challenge(challenger, "отклонено", challenge)
                 return False, "Вызов от бота отклонен"
 
-            # Проверка варианта игры
             variant = challenge.get('variant', {}).get('key')
             if variant not in ACCEPTANCE_CRITERIA['variants']:
                 self._log_challenge(challenger, "отклонено", challenge)
                 return False, f"Неподдерживаемый вариант {variant}"
 
-            # Проверка типа игры
             if tc.get('type') not in ['clock', 'correspondence', 'unlimited']:
                 self._log_challenge(challenger, "отклонено", challenge)
                 return False, "Неподдерживаемый тип игры"
 
-            # Парсинг времени
             parsed_tc = self.parse_time_control(tc)
 
-            # Проверка рейтинга
             if challenger.get('rating'):
                 rating = challenger['rating']
                 if not (ACCEPTANCE_CRITERIA['min_rating'] <= rating <=
@@ -177,21 +164,19 @@ class BotManager:
                     self._log_challenge(challenger, "отклонено", challenge)
                     return False, f"Рейтинг {rating} вне диапазона"
 
-            # Проверка временного контроля
             acceptable = any(parsed_tc[0] == t and parsed_tc[1] >= i
                              for t, i in ACCEPTANCE_CRITERIA['time_controls'])
             if not acceptable:
                 self._log_challenge(challenger, "отклонено", challenge)
                 return False, "Недопустимый временной контроль"
 
-            # Логируем принятый вызов
             self._log_challenge(challenger, "принято", challenge)
             return True, "Вызов принят"
         except Exception as e:
             logging.error(f"Ошибка проверки: {str(e)}")
             return False, "Ошибка обработки"
+            
     def _log_challenge(self, challenger, status, challenge):
-        """Логирует вызов на игру."""
         title = challenger.get('title', '') or ''
         username = challenger.get('name', 'Неизвестный игрок')
         rating = challenger.get('rating', 'Нет данных')
@@ -200,16 +185,14 @@ class BotManager:
         time_control = f"{parsed_tc[0]}+{parsed_tc[1]}" if parsed_tc else "Нет данных"
         rated_status = "рейтинговая" if challenge.get('rated', False) else "нерейтинговая"
 
-        # Формируем сообщение для лога
         message = (
             f"{title} {username} ({rating}) - {status}\n"
             f"{time_control} - {rated_status}"
         )
 
-        # Логируем в отдельный файл
         challenge_logger.info(message)
+        
     async def safe_request(self, method, url, **kwargs):
-        """Исправленное формирование URL"""
         if not url.startswith(("http://", "https://")):
             url = f"{BASE_URL}{url}"
 
@@ -222,8 +205,8 @@ class BotManager:
             logging.error(f"Request failed: {str(e)}")
 
         return None
+        
     async def _reconnect_session(self):
-        """Пересоздание сессии с проверкой"""
         try:
             if self._session and not self._session.closed:
                 await self._session.close()
@@ -236,25 +219,23 @@ class BotManager:
         await self.session.post(
             f"{BASE_URL}/challenge/{challenge_id}/accept",
             headers={"Authorization": f"Bearer {API_TOKEN}"})
+        
     async def decline_challenge(self, challenge_id):
-        """Отклонить вызов"""
         await self.safe_request(
             self.session.post,
             f"{BASE_URL}/challenge/{challenge_id}/decline",
             headers={"Authorization": f"Bearer {API_TOKEN}"})
+        
     async def poll_events(self):
-        """Основной цикл опроса событий"""
         while True:
             try:
-                # Получение списка вызовов с обработкой ошибок
                 challenges = await self.safe_request(
                     self.session.get,
                     f"{BASE_URL}/challenge",
                     headers={"Authorization": f"Bearer {API_TOKEN}"}) or {
                         'in': []
-                    }  # Значение по умолчанию при ошибке
+                    }
 
-                # Обработка вызовов
                 for challenge in challenges.get('in', []):
                     logging.info(f"Получен вызов: {challenge.get('id')} Тип: {'Реванш' if challenge.get('rematch') else 'Обычный'}")
                     acceptable, reason = self.is_challenge_acceptable(
@@ -264,7 +245,6 @@ class BotManager:
                     else:
                         await self.decline_challenge(challenge['id'])
 
-                # Получение активных игр
                 games = await self.safe_request(
                     self.session.get,
                     f"{BASE_URL}/account/playing",
@@ -272,19 +252,16 @@ class BotManager:
                         'nowPlaying': []
                     }
 
-                # Управление задачами игр
                 async with self.lock:
                     current_ids = {
                         g['gameId']
                         for g in games.get('nowPlaying', [])
                     }
 
-                    # Удаление завершенных игр
                     for game_id in list(self.active_games.keys()):
                         if game_id not in current_ids:
                             del self.active_games[game_id]
 
-                    # Добавление новых игр
                     for game in games.get('nowPlaying', []):
                         if game['gameId'] not in self.active_games:
                             self.active_games[
@@ -301,7 +278,7 @@ class BotManager:
         try:
             if self.engine:
                 await self.engine.quit()
-                await asyncio.sleep(1)  # Пауза для завершения процессов
+                await asyncio.sleep(1)
 
             self.transport, self.engine = await chess.engine.popen_uci(
                 STOCKFISH_PATH)
@@ -312,9 +289,7 @@ class BotManager:
             logging.critical(f"Ошибка перезапуска движка: {str(e)}")
             raise
 
-    # Процессы в партии
     async def get_game_stream(self, game_id):
-        """Упрощенный поток событий игры"""
         url = f"{BASE_URL}/bot/game/stream/{game_id}"
         headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
@@ -330,7 +305,8 @@ class BotManager:
                         try:
                             yield json.loads(line)
                         except json.JSONDecodeError:
-                            pass  # Игнорируем битые JSON-сообщения
+                            pass
+                            
     async def process_game(self, game):
         game_id = game['gameId']
         logging.info(f"Обработка игры {game_id}")
@@ -383,13 +359,10 @@ class BotManager:
                     logging.info(f"Игра {game_id} завершена")
 
     async def handle_initial_state(self, state, game_id):
-        """Обработка начального состояния игры с улучшенным логированием"""
         try:
-            # Определение цвета из данных события
             game_data = self.games[game_id]
             board = game_data['board']
 
-            # Применение истории ходов
             if 'moves' in state and state['moves']:
                 logging.debug(f"Применяем историю ходов: {state['moves']}")
                 try:
@@ -400,11 +373,9 @@ class BotManager:
                         f"Некорректный ход в истории: {move} ({str(e)})")
                     return
 
-            # Логирование позиции
             logging.info(
                 f"Очередь хода: {'Белые' if board.turn else 'Чёрные'}")
 
-            # Проверка и запуск обработки хода
             if (board.turn == chess.WHITE and game_data) or \
                (board.turn == chess.BLACK and not game_data):
                 logging.info("Инициируем расчет хода")
@@ -419,28 +390,29 @@ class BotManager:
         except Exception as e:
             logging.error(f"Критическая ошибка: {str(e)}", exc_info=True)
             await self.restart_engine()
+            
     async def handle_chat_message(self, event, game_id):
         if event['username'] == 'lichess':
-            return  # Игнорируем системные сообщения
+            return
 
         message = f"{event['username']}: {event['text']}"
         logging.info(f"[Чат {game_id}] {message}")
 
-        # Пример ответа на команду
         if event['text'].lower() == '!help':
             await self.send_chat_message(game_id, "Доступные команды: !help")
+            
     async def send_chat_message(self, game_id, message):
         url = f"{BASE_URL}/bot/game/{game_id}/chat"
         data = {'room': 'player', 'text': message}
         await self.safe_request(self.session.post, url, json=data)
+        
     async def handle_game_end(self, event, game_id):
         logging.info(f"Игра {game_id} завершена. Причина: {event.get('status')}")
 
-        # Опционально: предложение реванша при поражении
         if event.get('winner') != 'white' and self.games[game_id]['is_white']:
             await self.send_chat_message(game_id, "Хорошая игра! Хотите реванш?")
+            
     async def handle_game_state(self, state, game_id):
-        """Обработка состояния игры с проверкой целостности"""
         try:
             game_data = self.games.get(game_id)
             if not game_data:
@@ -452,13 +424,11 @@ class BotManager:
             current_moves = [m.uci() for m in board.move_stack]
             new_moves = state.get('moves', '').split()
 
-            # Проверка расхождений в истории ходов
             if len(new_moves) < len(current_moves) or new_moves[:len(current_moves)] != current_moves:
                 logging.warning("Обнаружено расхождение в истории ходов! Перезагружаем доску...")
                 await self.reload_game_state(game_id)
                 return
 
-            # Применяем только новые ходы
             for move in new_moves[len(current_moves):]:
                 try:
                     board.push_uci(move)
@@ -468,18 +438,15 @@ class BotManager:
                     await self.reload_game_state(game_id)
                     return
 
-            # Дальнейшая обработка хода...
-
-            # Расчет хода с обработкой таймаута
             logging.info("Запуск расчета хода...")
             try:
-                async with async_timeout.timeout(5):  # Исправленная строка
+                async with async_timeout.timeout(5):
                     result = await self.engine.play(
                         board,
                         chess.engine.Limit(time=0.05),
                         info=chess.engine.INFO_BASIC)
 
-                    if result.move and result.move in board.legal_moves:  # Добавлена проверка
+                    if result.move and result.move in board.legal_moves:
                         logging.info(
                             f"Stockfish: {result.move.uci()}"
                         )
@@ -498,8 +465,8 @@ class BotManager:
 
         except Exception as e:
             logging.error(f"Фатальная ошибка: {str(e)}", exc_info=True)
+            
     async def reload_game_state(self, game_id):
-        """Перезагружает состояние игры с сервера"""
         try:
             async with self.session.get(
                 f"{BASE_URL}/bot/game/{game_id}",
@@ -511,8 +478,8 @@ class BotManager:
                 logging.info(f"Состояние игры {game_id} перезагружено. FEN: {new_fen}")
         except Exception as e:
             logging.error(f"Ошибка перезагрузки игры {game_id}: {str(e)}")
+            
     async def make_move(self, game_id, move):
-        """Улучшенная версия отправки хода с обновлением доски"""
         for attempt in range(MAX_RETRIES):
             try:
                 async with self.session.post(
@@ -523,7 +490,6 @@ class BotManager:
                     if response.status == 200:
                         logging.info(f"Ход {move} успешно отправлен!")
 
-                        # Обновляем локальную доску
                         if game_id in self.games:
                             try:
                                 self.games[game_id]['board'].push_uci(move)
@@ -541,8 +507,8 @@ class BotManager:
 
         logging.error("Все попытки отправки хода провалились")
         return False
+        
     async def get_best_move(self, fen: str) -> chess.Move | None:
-        """Асинхронный расчет хода"""
         try:
             board = chess.Board(fen)
             result = await self.engine.play(board,
